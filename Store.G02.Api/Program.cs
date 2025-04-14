@@ -52,7 +52,7 @@ namespace Store.G02.Api
 
             #endregion
 
-
+            app.UseStaticFiles();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

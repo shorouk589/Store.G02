@@ -39,7 +39,7 @@ namespace Presentation
             return Ok(result);
         }
 
-        [HttpGet("brands")] // Get: /api/products/brands
+        [HttpGet("brands")] // Get: /api/products/brandsS
         public async Task<IActionResult> GetAllBrands()
         {
             var result = await _serviceManager.ProductService.GetAllBrandsAsync();
