@@ -39,8 +39,6 @@ namespace Persistence.Repositories
                  : await _context.Set<TEntity>().AsNoTracking().ToListAsync();
 
 
-            //if (trackChanges) return await _context.Set<TEntity>().ToListAsync();
-            //return await _context.Set<TEntity>().AsNoTracking().ToListAsync();
         }
 
         public async Task<TEntity?> GetAsync(TKey id)
@@ -72,15 +70,17 @@ namespace Persistence.Repositories
           
         }
 
-        public async Task<TEntity?> GetAsync(ISpecifications<TEntity, TKey> spec, TKey id)
+        public async Task<TEntity?> GetAsync(ISpecifications<TEntity, TKey> spec)
         {
             return await ApplySpecification(spec).FirstOrDefaultAsync();
         }
 
-
+      
         private IQueryable<TEntity> ApplySpecification( ISpecifications<TEntity, TKey> spec)
         {
-            return SpecificationEvaluator.GetQuEry(_context.Set<TEntity>(),spec);
+            return SpecificationEvaluator.GetQuery(_context.Set<TEntity>(),spec);
         }
+
+     
     }
 }

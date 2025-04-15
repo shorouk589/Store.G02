@@ -11,7 +11,7 @@ namespace Persistence
 {
     static class SpecificationEvaluator
     {
-        public static IQueryable<TEntity> GetQuEry<TEntity, TKey>
+        public static IQueryable<TEntity> GetQuery<TEntity, TKey>
         (
         IQueryable<TEntity> inputQuery,
         ISpecifications<TEntity, TKey> spec
