@@ -22,20 +22,7 @@ namespace Persistence.Repositories
 
             _repositories = new ConcurrentDictionary<string, object>();
         }
-        //public IGenericRepository<TEntity, TKey> GetRepository<TEntity, TKey>() where TEntity : BaseEntity<TKey>
-        //{//return new GenericRepository<TEntity,TKey>(_context); 
-
-
-        //    var type = typeof(TEntity).Name;
-        //    if (!_repositories.ContainsKey(type))
-        //    {
-        //        var repositories = new Dictionary<string, object>();
-        //        _repositories.Add(type, repositories);
-        //    }
-        //    return (IGenericRepository<TEntity, TKey>)_repositories[type];
-        //}
-
-
+      
         public IGenericRepository<TEntity, TKey> GetRepository<TEntity, TKey>() where TEntity : BaseEntity<TKey>
 
        => (IGenericRepository<TEntity, TKey>)_repositories.GetOrAdd(typeof(TEntity).Name, new GenericRepository<TEntity, TKey>(_context));
